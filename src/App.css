@@ -1,0 +1,16 @@
+body {
+	background-color: #14212b;
+	color: #ffffff;
+	font-family: system-ui, -apple-system, system-ui, "Segoe UI", Roboto, Ubuntu,
+		"Helvetica Neue", sans-serif;
+}
+
+.button-priamry {
+	background-color: #1d91da;
+	color: #ffffff;
+}
+
+.card-primary {
+	background-color: #192834;
+	color: #37444d;
+}
