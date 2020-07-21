@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import Welcome from "./components/welcome";
 import styled, { css } from "styled-components";
+import AppLayout from "./components/AppLayout";
+import AppBar from "./components/AppBar";
 
 const BlueHeart = styled.div`
 	background-color: #1d91da;
@@ -14,8 +16,6 @@ const BlueHeart = styled.div`
 	border-radius: 9999px;
 	font-size: 15px;
 	font-weight: 700;
-	font-family: system-ui, -apple-system, system-ui, "Segoe UI", Roboto, Ubuntu,
-		"Helvetica Neue", sans-serif;
 	${(props) =>
 		props.primary &&
 		css`
@@ -36,13 +36,14 @@ const CherryBlossom = styled(BlueHeart)`
 
 function App() {
 	return (
-		<div>
+		<AppLayout>
+			<AppBar />
 			<Welcome name="CryptoDash" />
 			<BlueHeart>Hello</BlueHeart>
 			<BlueHeart primary>Hello</BlueHeart>
 			<PurpleOctopus>Hello</PurpleOctopus>
 			<CherryBlossom>Hello</CherryBlossom>
-		</div>
+		</AppLayout>
 	);
 }
 
