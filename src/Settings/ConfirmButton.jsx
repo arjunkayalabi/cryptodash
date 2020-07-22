@@ -1,10 +1,6 @@
 import React from "react";
-import "./App.css";
-import Welcome from "./components/welcome";
 import styled, { css } from "styled-components";
-import AppLayout from "./components/AppLayout";
-import AppBar from "./components/AppBar";
-import AppProvider from "./components/AppProvider";
+import { AppContext } from "../App/AppProvider";
 
 const BlueHeart = styled.div`
 	background-color: #1d91da;
@@ -35,19 +31,25 @@ const CherryBlossom = styled(BlueHeart)`
 	color: #ffffff;
 `;
 
-function App() {
+const ConfirmButtonStyled = styled(BlueHeart)`
+	cursor: pointer;
+`;
+
+export const CenteredDiv = styled.div`
+	display: grid;
+	justify-content: center;
+`;
+
+export default function () {
 	return (
-		<AppLayout>
-			<AppProvider>
-				<AppBar />
-				<Welcome name="CryptoDash" />
-				<BlueHeart>Hello</BlueHeart>
-				<BlueHeart primary>Hello</BlueHeart>
-				<PurpleOctopus>Hello</PurpleOctopus>
-				<CherryBlossom>Hello</CherryBlossom>
-			</AppProvider>
-		</AppLayout>
+		<AppContext.Consumer>
+			{({ confirmFavorites }) => (
+				<CenteredDiv>
+					<ConfirmButtonStyled onClick={confirmFavorites}>
+						Confirm Favorites
+					</ConfirmButtonStyled>
+				</CenteredDiv>
+			)}
+		</AppContext.Consumer>
 	);
 }
-
-export default App;
