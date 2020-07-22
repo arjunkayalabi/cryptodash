@@ -4,6 +4,7 @@ import Welcome from "./components/welcome";
 import styled, { css } from "styled-components";
 import AppLayout from "./components/AppLayout";
 import AppBar from "./components/AppBar";
+import AppProvider from "./components/AppProvider";
 
 const BlueHeart = styled.div`
 	background-color: #1d91da;
@@ -37,12 +38,14 @@ const CherryBlossom = styled(BlueHeart)`
 function App() {
 	return (
 		<AppLayout>
-			<AppBar />
-			<Welcome name="CryptoDash" />
-			<BlueHeart>Hello</BlueHeart>
-			<BlueHeart primary>Hello</BlueHeart>
-			<PurpleOctopus>Hello</PurpleOctopus>
-			<CherryBlossom>Hello</CherryBlossom>
+			<AppProvider>
+				<AppBar />
+				<Welcome name="CryptoDash" />
+				<BlueHeart>Hello</BlueHeart>
+				<BlueHeart primary>Hello</BlueHeart>
+				<PurpleOctopus>Hello</PurpleOctopus>
+				<CherryBlossom>Hello</CherryBlossom>
+			</AppProvider>
 		</AppLayout>
 	);
 }

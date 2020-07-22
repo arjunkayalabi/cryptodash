@@ -1,14 +1,19 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { AppContext } from "./AppProvider";
 
 const Bar = styled.div`
 	display: grid;
-	margin-botton: 40px;
+	// margin-botton: 10px;
 	grid-template-columns: 180px auto 100px 30px 100px;
+	text-align: center;
 `;
 
 const Logo = styled.div`
 	font-size: 1.5em;
+	text-align: left;
+	margin: 0;
+	padding: 0;
 `;
 
 const ControlButtonElement = styled.div`
@@ -17,13 +22,26 @@ const ControlButtonElement = styled.div`
 		props.active &&
 		css`
 			// color: #1d91da;
-			border-bottom: solid 2px;
+			border-bottom: solid 2px #1d91da;
 			text-align: center;
 		`}
 `;
 
-function ControlButton({ name, active }) {
-	return <ControlButtonElement active={active}>{name}</ControlButtonElement>;
+const toTitleCase = (word) => word.charAt(0).toUpperCase() + word.substr(1);
+
+function ControlButton({ name }) {
+	return (
+		<AppContext.Consumer>
+			{({ page, setPage }) => (
+				<ControlButtonElement
+					active={page === name}
+					onClick={() => setPage(name)}
+				>
+					{toTitleCase(name)}
+				</ControlButtonElement>
+			)}
+		</AppContext.Consumer>
+	);
 }
 
 const AppBar = () => {
@@ -31,9 +49,9 @@ const AppBar = () => {
 		<Bar>
 			<Logo>CryptoDash</Logo>
 			<div></div>
-			<ControlButton active name="Dashboard" />
+			<ControlButton active name="dashboard" />
 			<div></div>
-			<ControlButton name="Settings" />
+			<ControlButton name="settings" />
 		</Bar>
 	);
 };
